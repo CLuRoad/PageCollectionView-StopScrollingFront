@@ -1,0 +1,2 @@
+# PageCollectionViewstop-StopScrollingFront
+UICollection模拟翻页模式，每一页开始第一个item都完整展示

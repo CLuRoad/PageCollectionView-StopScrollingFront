@@ -32,10 +32,11 @@
     collectionView.showsHorizontalScrollIndicator = NO;
     collectionView.dataSource = self;
     collectionView.delegate = self;
+    collectionView.pagingEnabled = NO;
     collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
 
     [collectionView registerClass:CircleCollectionViewCell.class forCellWithReuseIdentifier:@"CircleCollectionViewCell"];
-        collectionView.pagingEnabled = YES;
+    
     _collectionView = collectionView;
     [self.view addSubview:_collectionView];
     
@@ -62,10 +63,5 @@
     [cell.circleButton setTitle:[NSString stringWithFormat:@"%ld", indexPath.row + 1] forState:UIControlStateNormal];
     return cell;
 }
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"---- %lf", scrollView.contentOffset.x);
-}
-
 
 @end

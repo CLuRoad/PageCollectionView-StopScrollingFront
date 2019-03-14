@@ -90,7 +90,11 @@ static CGFloat const kPaddingLeft = 20.f;   // 最左边item左边距
 
 #pragma mark --- UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    _currentIndex = (NSInteger)scrollView.contentOffset.x / (NSInteger)(_pageCapacity * (kItemWidth + kPaddingMid));
+    /*
+     * 分子scrollView.contentOffset.x为什么要+kItemWidth ？？
+     * 消除scrollView在摆动的时候的误差，此时contentOffset.x比预期减少了10左右像素，导致_currentIndex比预期小1
+     */
+    _currentIndex = (NSInteger)(scrollView.contentOffset.x + kItemWidth) / (NSInteger)(_pageCapacity * (kItemWidth + kPaddingMid));
 }
 
 @end
